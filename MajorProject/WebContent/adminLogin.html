@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>AdminLogin</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="bootstrap/css/nare.css">
+    <link rel="stylesheet" href="bootstrap/css/mybck.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <script src="bootstrap/js/angular.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				 <a class="navbar-brand" href="index.html"><b>SVCET</b><i>Student Counselling</i></a>
+			</div>
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+				    <li><a href="index.html">Home</a></li>
+				    <li><a href="#">About</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Admin<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li class="active"><a href="adminLogin.html">Login</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Add Counsellor</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Remove Counsellor</a></li>
+							<li class="divider"></li>
+							<li><a href="mynewhtml.html">Add Student</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Remove Student</a></li>
+							<li class="divider"></li>
+							<li><a href="#">view Student details</a></li>
+							<li class="divider"></li>
+							<li><a href="#">view Counsellor</a></li>
+						</ul></li>
+			
+				</ul>
+			</div>
+		</div>
+	</nav>
+   <div ng-app="main" ng-controller="formCtrl" class="container">
+  <h3 style="margin-left:50%;width:500px">Admin</h3> <br><br>
+      <form class="well input-form" name="inputform" action="AdminLogin" method="post" style="margin-left:30%;width:500px">
+       
+     <div class="form-group has-feedback" ng-class="{'has-success':inputform.email.$dirty && inputform.email.$valid, 'has-error':inputform.email.$dirty && inputform.email.$invalid}">
+      <label class="control-label" for="exampleInputEmail1">Email address</label>
+      <input type="email" name="email" ng-model="data.email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+      <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok':inputform.email.$dirty && inputform.email.$valid, 'glyphicon-remove':inputform.email.$dirty && inputform.email.$invlaid}" aria-hidden="true"></span>
+       <span id="inputSuccess2Status" class="sr-only">(success)</span>
+   </div>
+ <div class="form-group has-feedback" ng-class="{'has-success':inputform.password.$dirty && inputform.password.$valid, 'has-error':inputform.password.$dirty && inputform.password.$invalid}">
+     <label class="control-label" for="exampleInputPassword1">Password</label>
+     <input type="password" name="password" ng-model="data.password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+     <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok':inputform.password.$dirty && inputform.password.$valid, 'glyphicon-remove':inputform.password.$dirty && inputform.password.$invlaid}" aria-hidden="true"></span>
+  <span id="inputError2Status" class="sr-only">(error)</span>
+  </div>
+          <button type="submit" class="btn btn-primary" ng-disabled="inputform.$invalid || inputform.$pristine">Login</button>
+       </form>
+    </div>
+    <script src="bootstrap/js/CustomeAngular.js"></script>
+    <script src="bootstrap/js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/myjquery.js"></script>
+</body>
+</html>

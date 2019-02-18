@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Register</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="bootstrap/css/nare.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="bootstrap/js/angular.min.js"></script>
+
+
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse  navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+                <a class="navbar-brand" href="index.html"><b>SVCET</b><i>Student Counselling</i></a>
+			</div>
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">Home</a></li>
+					<li class="active"><a href="#">StudentRegisterForm</a></li>
+					<li><a href="studentlogin.html">StudentLogin</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div ng-app="main" ng-controller="formCtrl" class="container" style="margin:5% 25%">
+		<div>
+			<h3>StudentRegistrationForm</h3>
+		</div>
+		<form class="well input-form" name="inputform" action="StudentRegister"
+			method="post" enctype="multipart/form-data" style="width: 500px">
+			<div class="form-group">
+				<label for="ID">RollNO</label> <input type="text" name="SID"
+					class="form-control" id="ID" placeholder="Student Roll NO"
+					required />
+			</div>
+			<div class="form-group">
+				<label for="exampleInputName1">Name of the Student</label> <input type="text"
+					name="sname" class="form-control" id="exampleInputName1"
+					placeholder="Student Name" required />
+			</div>
+			<div class="form-group">
+				<label for="exampleInputName2">Father's Name</label> <input type="text"
+					name="sfname" class="form-control" id="exampleInputName2"
+					placeholder="Father's Name" required />
+			</div>
+			<div class="form-group">
+				<label for="exampleInputName2">Mother's Name</label> <input type="text"
+					name="smname" class="form-control" id="exampleInputName2"
+					placeholder="Mother's Name" required />
+			</div>
+			<div class="form-group">
+				<label for="comment">Address for Communication</label>
+				<textarea name="address" class="form-control" rows="3"
+					placeholder="address" required></textarea>
+			</div>
+			<div class="form-group">
+				<label for="mobile1">Student Contact Number</label> <input
+					type="number" name="mobile" class="form-control" id="mobile1"
+					placeholder="Mobile" required />
+			</div>
+			<div class="form-group">
+				<label for="mobile1">Whatsapp Contact Number</label> <input
+					type="number" name="whatsappno" class="form-control"
+					id="whatsappno" placeholder="What's app number" required />
+			</div>
+			<div class="form-group">
+				<label for="mobile1">Father's Contact Number</label> <input
+					type="number" name="sfmobile" class="form-control" id="sfmobile1"
+					placeholder="Father's Mobile" required />
+			</div>
+			<div class="form-group">
+				<label for="mobile1">Mother's Contact Number</label> <input
+					type="number" name="smmobile" class="form-control" id="smmobile1"
+					placeholder="Mother's Mobile" />
+			</div>
+			<div class="form-group has-feedback input-group"
+				ng-class="{'has-success':inputform.email.$dirty && inputform.email.$valid, 'has-error':inputform.email.$dirty && inputform.email.$invalid}">
+				<label class="control-label" for="exampleInputEmail1">Email
+					address</label> 
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input type="email" name="email" ng-model="data.email"
+					class="form-control" id="exampleInputEmail1" placeholder="Email">
+				<span class="glyphicon form-control-feedback"
+					ng-class="{'glyphicon-ok':inputform.email.$dirty && inputform.email.$valid, 'glyphicon-remove':inputform.email.$dirty && inputform.email.$invlaid}"
+					aria-hidden="true"></span> <span id="inputSuccess2Status"
+					class="sr-only">(success)</span>
+			</div>
+			<div class="form-group has-feedback input-group"
+				ng-class="{'has-success':inputform.password.$dirty && inputform.password.$valid, 'has-error':inputform.password.$dirty && inputform.password.$invalid}">
+				<label class="control-label" for="exampleInputPassword1">Password</label>
+				 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+				<input type="password" name="password" ng-model="data.password"
+					class="form-control" id="exampleInputPassword1"
+					placeholder="Password" required> <span
+					class="glyphicon form-control-feedback"
+					ng-class="{'glyphicon-ok':inputform.password.$dirty && inputform.password.$valid, 'glyphicon-remove':inputform.password.$dirty && inputform.password.$invlaid}"
+					aria-hidden="true"></span> <span id="inputError2Status"
+					class="sr-only">(error)</span>
+			</div>
+			<div class="form-group">
+				<label for="mobile1">AadharCard No/Passport No</label> <input
+					type="number" name="aadhar" class="form-control" id="aadhar1"
+					placeholder="AadharCard/Password" required />
+			</div>
+			<div class="form-group">
+				<label for="comment">percentage Year Wise(CGPA)</label>
+				<textarea name="CGPA" class="form-control" rows="3"
+					placeholder="example:1year=8.7,2year=7.9" required></textarea>
+			</div>
+			<div class="radio">
+                 <label style="margin-right:10px"><input type="radio" name="category" value="management">Management</label>
+                  <label style="margin-right:10px"><input type="radio" name="category" value="convenor"> Convenor</label>
+                   <label style="margin-right:10px"><input type="radio" name="category" value="others">Others</label>
+             </div>
+			<div class="form-group myselection">
+				<label for="Select">Select Branch</label> <select id="Select"
+					class="form-control" name="branch">
+					<option>CSE</option>
+					<option>ECE</option>
+				</select>
+			</div>
+			<div class="form-group myselection">
+				<label for="Select">Select Section</label> <select id="Select"
+					class="form-control" name="section">
+					<option>A</option>
+					<option>B</option>
+				</select>
+			
+			</div>
+	
+			<button type="submit" class="btn btn-primary"
+				ng-disabled="inputform.$invalid || inputform.$pristine" style="margin-left:10%">Login</button>
+			<button type="reset" class="btn btn-primary" value="Reset" style="float:right;margin-right:30%">Clear</button>
+		</form>
+	</div>
+	<script src="bootstrap/js/CustomeAngular.js"></script>
+	<script src="bootstrap/js/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="bootstrap/js/myjquery.js"></script>
+</body>
+</html>

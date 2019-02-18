@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>CounsellorLogin</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="bootstrap/css/nare.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="bootstrap/js/angular.min.js"></script>
+
+
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"><b>SVCET</b><i>Student Counselling</i></a>
+			</div>
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">Home</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Student<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="studentregister.html">Register</a></li>
+							<li class="divider"></li>
+							<li class="active"><a href="studentlogin.html">Login</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div ng-app="main" ng-controller="formCtrl" class="container">
+		<h3>StudentLogin</h3>
+		<br> <br>
+		<form class="well input-form" name="inputform" action="StudentLogin"
+			method="post" style="width: 500px">
+
+			<div class="form-group has-feedback"
+				ng-class="{'has-success':inputform.email.$dirty && inputform.email.$valid, 'has-error':inputform.email.$dirty && inputform.email.$invalid}">
+				<label class="control-label" for="exampleInputEmail1">Email
+					address</label> <input type="email" name="email" ng-model="data.email"
+					class="form-control" id="exampleInputEmail1" placeholder="Email">
+				<span class="glyphicon form-control-feedback"
+					ng-class="{'glyphicon-ok':inputform.email.$dirty && inputform.email.$valid, 'glyphicon-remove':inputform.email.$dirty && inputform.email.$invlaid}"
+					aria-hidden="true"></span> <span id="inputSuccess2Status"
+					class="sr-only">(success)</span>
+			</div>
+			<div class="form-group has-feedback"
+				ng-class="{'has-success':inputform.password.$dirty && inputform.password.$valid, 'has-error':inputform.password.$dirty && inputform.password.$invalid}">
+				<label class="control-label" for="exampleInputPassword1">Password</label>
+				<input type="password" name="password" ng-model="data.password"
+					class="form-control" id="exampleInputPassword1"
+					placeholder="Password" required> <span
+					class="glyphicon form-control-feedback"
+					ng-class="{'glyphicon-ok':inputform.password.$dirty && inputform.password.$valid, 'glyphicon-remove':inputform.password.$dirty && inputform.password.$invlaid}"
+					aria-hidden="true"></span> <span id="inputError2Status"
+					class="sr-only">(error)</span>
+			</div>
+			<button type="submit" class="btn btn-primary"
+				ng-disabled="inputform.$invalid || inputform.$pristine">Login</button>
+				<a  href="#" style="float:right;width:50%;margin-top:8px;font-size:17px">forgot password....</a>
+		</form>
+	</div>
+	<script src="bootstrap/js/CustomeAngular.js"></script>
+	<script src="bootstrap/js/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="bootstrap/js/myjquery.js"></script>
+</body>
+</html>

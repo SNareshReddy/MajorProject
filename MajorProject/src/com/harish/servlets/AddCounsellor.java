@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.harish.beans.CounsellorBean;
 import com.harish.dao.CounsellorDao;
@@ -24,8 +25,17 @@ public class AddCounsellor extends HttpServlet {
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		PrintWriter out=response.getWriter();
-		
+		response.setHeader("Cache-Control", "no-store,no-cache,must-revalidate");
+			response.setHeader("Pragma", "no-cache");
+			response.setHeader("Expires","0");
+			HttpSession session = request.getSession();
+			PrintWriter out=response.getWriter();
+			if(session.getAttribute("name") == null) {
+				 out.println("<div class='container'>");
+				 out.println("<h1>please relogin</h1>");
+				 response.sendRedirect("adminLogin.html");  
+				 out.println("</div>");
+			}	
 		out.print("<!DOCTYPE html>");
 		out.print("<html>");
 		out.println("<head>");
@@ -44,8 +54,8 @@ public class AddCounsellor extends HttpServlet {
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		String smobile=request.getParameter("mobile");
-		long mobile=Long.parseLong(smobile);
-		CounsellorBean bean=new CounsellorBean(id, name, email, password, mobile);
+		
+		CounsellorBean bean=new CounsellorBean(id, name, email, password, smobile);
 		try {
 		if(CounsellorDao.save(bean) >0)
 		out.print("<h4>Counsellor added successfully</h4>");

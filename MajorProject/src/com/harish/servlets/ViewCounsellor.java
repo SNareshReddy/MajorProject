@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.harish.beans.CounsellorBean;
 import com.harish.dao.CounsellorDao;
@@ -24,7 +25,17 @@ public class ViewCounsellor extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		response.setContentType("text/html");
+		response.setHeader("Cache-Control", "no-store,no-cache,must-revalidate");
+		response.setHeader("Pragma", "no-cache");
+		response.setHeader("Expires","0");
+		HttpSession session = request.getSession();
 		PrintWriter out=response.getWriter();
+		if(session.getAttribute("name") == null) {
+			 out.println("<div class='container'>");
+			 out.println("<h1>please login again</h1>");
+			 response.sendRedirect("adminLogin.html");
+			 out.println("</div>");
+		}
 		out.println("<!DOCTYPE");
 		out.println("<html>");
 		out.println("<head>");

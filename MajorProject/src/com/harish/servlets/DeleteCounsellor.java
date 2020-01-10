@@ -17,11 +17,16 @@ import com.harish.dao.CounsellorDao;
 @WebServlet("/DeleteCounsellor")
 public class DeleteCounsellor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			response.setHeader("Cache-Control", "no-store,no-cache,must-revalidate");
+			response.setHeader("Pragma", "no-cache");
+			response.setHeader("Expires","0");
 			String sid=request.getParameter("id");
 			int id=Integer.parseInt(sid);
 			CounsellorDao.delete(id);

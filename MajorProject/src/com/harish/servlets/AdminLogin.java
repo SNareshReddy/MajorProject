@@ -19,7 +19,20 @@ public class AdminLogin extends HttpServlet {
    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
+		response.setHeader("Cache-Control", "no-store,no-cache,must-revalidate");
+	//	response.addHeader("Cache-Control", "post-check=0,pre-check=0");
+		response.setHeader("Pragma", "no-cache");
+		response.setHeader("Expires","0");
 		PrintWriter out=response.getWriter();
+		 String email=request.getParameter("email");
+		 HttpSession session =request.getSession();
+		 System.out.println("Session flag---"+session.getAttribute("naresh"));
+		 if(session.getAttribute("naresh") == null) {
+			 out.println("<div class='container'>");
+			 out.println("<h1>please login again</h1>");
+			 response.sendRedirect("adminLogin.html");
+			 out.println("</div>");
+		}
 		out.print("<!DOCTYPE html>");
 		out.print("<html>");
 		out.println("<head>");
@@ -29,14 +42,14 @@ public class AdminLogin extends HttpServlet {
 		out.println("<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>");
 		out.println("</head>");
 		out.println("<body>");
-		 String email=request.getParameter("email");
+	
 		 String password=request.getParameter("password");
 		 if(email.equals("naresh@gmail.com")&&password.equals("naresh123")){
-			 HttpSession session=request.getSession();
-			 session.setAttribute("naresh", "true");
+				
+				session.setAttribute("name",email);
+			    session.setAttribute("naresh", "true");
 			 request.getRequestDispatcher("navadmin.html").include(request, response);
 			 request.getRequestDispatcher("Carousel.html").include(request, response);
-
 			
 		 }
 		 

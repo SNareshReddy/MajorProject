@@ -28,6 +28,10 @@ public class StudentRegister extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html");
+		response.setHeader("Cache-Control", "no-store,no-cache,must-revalidate");
+		response.setHeader("Pragma", "no-cache");
+		response.setHeader("Expires","0");
+		
 		PrintWriter out=response.getWriter();
 		out.println("<!DOCTYPE>");
 		out.println("<html>");
@@ -58,8 +62,7 @@ public class StudentRegister extends HttpServlet {
 		long mmobile=Long.parseLong(smm);
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
-		String adhar=request.getParameter("aadhar");
-		long aadhar=Long.parseLong(adhar);
+		String aadhar=request.getParameter("aadhar");
 		String cgpa=request.getParameter("CGPA");
 		String category=request.getParameter("category");
 		String branch=request.getParameter("branch");

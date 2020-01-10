@@ -25,6 +25,10 @@ public class AssignStudents extends HttpServlet {
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html");
+		response.setHeader("Cache-Control", "no-store,no-cache,must-revalidate");
+		response.setHeader("Pragma", "no-cache");
+		response.setHeader("Expires","0");
+		
 		PrintWriter out=response.getWriter();
 		out.println("<!DOCTYPE");
 		out.println("<html>");

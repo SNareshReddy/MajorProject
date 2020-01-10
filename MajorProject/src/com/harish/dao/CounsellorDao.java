@@ -16,7 +16,7 @@ public class CounsellorDao {
 			ps.setString(2,bean.getName());
 			ps.setString(3,bean.getEmail());
 			ps.setString(4,bean.getPassword());
-			ps.setLong(5,bean.getMobile());
+			ps.setString(5,bean.getMobile());
 			status=ps.executeUpdate();
 			con.close();
 			
@@ -55,7 +55,7 @@ public class CounsellorDao {
 				bean.setName(rs.getString("name"));
 				bean.setEmail(rs.getString("email"));
 				bean.setPassword(rs.getString("password"));
-				bean.setMobile(rs.getLong("mobile"));
+				bean.setMobile(rs.getString("mobile"));
 				list.add(bean);
 			}
 			con.close();
@@ -70,21 +70,20 @@ public static CounsellorBean viewById(int id){
 	CounsellorBean bean=new CounsellorBean();
 	try{
 		Connection con=DB.getCon();
-		PreparedStatement ps=con.prepareStatement("select * from COUNSELLOR where c_id=?");
+		PreparedStatement ps=con.prepareStatement("select c_id,name,email,password,mobile from COUNSELLOR where c_id=?");
 		
 		ps.setInt(1,id);
 		ResultSet rs=ps.executeQuery();
 		if(rs.next()){
-			bean.setId(rs.getInt(1));
-			bean.setName(rs.getString(2));
-			bean.setPassword(rs.getString(3));
-			bean.setEmail(rs.getString(4));
-			bean.setMobile(rs.getLong(5));
+			bean.setId(rs.getInt("c_id"));
+			bean.setName(rs.getString("name"));
+			bean.setEmail(rs.getString("email"));
+			bean.setPassword(rs.getString("password"));
+			bean.setMobile(rs.getString("mobile"));
 		}
 		con.close();
 		
 	}catch(Exception e){System.out.println(e);}
-	
 	return bean;
 }
 
@@ -96,7 +95,7 @@ public static int update(CounsellorBean bean){
 		ps.setString(1,bean.getName());
 		ps.setString(2,bean.getEmail());
 		ps.setString(3,bean.getPassword());
-		ps.setLong(4,bean.getMobile());
+		ps.setString(4,bean.getMobile());
 		ps.setInt(5,bean.getId());
 		status=ps.executeUpdate();
 		con.close();

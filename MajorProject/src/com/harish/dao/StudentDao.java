@@ -26,7 +26,7 @@ public class StudentDao {
 		ps.setLong(9,bean.getMmobile());
 		ps.setString(10,bean.getEmail());
 		ps.setString(11,bean.getPassword());
-		ps.setLong(12,bean.getAadhar());
+		ps.setString(12,bean.getAadhar());
 		ps.setString(13,bean.getCgpa());
 		ps.setString(14,bean.getCategory());
 		ps.setString(15, bean.getBranch());
@@ -78,7 +78,7 @@ public class StudentDao {
 				bean.setMmobile(rs.getLong("mmobile"));
 				bean.setEmail(rs.getString("email"));
 				bean.setPassword(rs.getString("password"));
-				bean.setAadhar(rs.getLong("aadhar"));
+				bean.setAadhar(rs.getString("aadhar"));
 				bean.setCgpa(rs.getString("cgpa"));
 				bean.setCategory(rs.getString("category"));
 				bean.setBranch(rs.getString("branch"));

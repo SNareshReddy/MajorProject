@@ -22,6 +22,9 @@ public class EditCounsellorForm extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
+		response.setHeader("Cache-Control", "no-store,no-cache,must-revalidate");
+		response.setHeader("Pragma", "no-cache");
+		response.setHeader("Expires","0");
 		PrintWriter out=response.getWriter();
 		
 		out.print("<!DOCTYPE html>");
@@ -38,9 +41,8 @@ public class EditCounsellorForm extends HttpServlet {
 		out.println("<div class='container'>");
 		String sid=request.getParameter("id");
 		int id=Integer.parseInt(sid);
-		
 		CounsellorBean bean=CounsellorDao.viewById(id);
-		
+		System.out.println("this is editing data--"+bean);
 		out.print("<form action='EditCounsellor' method='post' style='width:300px'>");
 		out.print("<div class='form-group'>");
 		out.print("<input type='hidden' name='id' value='"+bean.getId()+"'/>");

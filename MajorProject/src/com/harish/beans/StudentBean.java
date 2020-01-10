@@ -4,11 +4,11 @@ package com.harish.beans;
 
 public class StudentBean {
 	private int id;
-	private String sname,sfname,smname,address,email,password,cgpa,category,branch,section;
-	private long mobile,wnumber,fmobile,mmobile,aadhar;
+	private String sname,sfname,smname,address,email,password,cgpa,category,branch,section,aadhar;
+	private long mobile,wnumber,fmobile,mmobile;
   
 	
-	public StudentBean(int id, String sname, String sfname, String smname, String address, long mobile,long wnumber,long fmobile,long mmobile, String email, String password,long aadhar,String cgpa,String category,String branch,String section) {
+	public StudentBean(int id, String sname, String sfname, String smname, String address, long mobile,long wnumber,long fmobile,long mmobile, String email, String password,String aadhar,String cgpa,String category,String branch,String section) {
 		super();
 		this.id = id;
 		this.sname = sname;
@@ -28,7 +28,7 @@ public class StudentBean {
 	    this.section=section;
 	 
 	}
-	public StudentBean(String sname, String sfname, String smname, String address, long mobile,long wnumber, long fmobile, long mmobile,String email, String password, long aadhar,String cgpa,String category,String branch,String section) {
+	public StudentBean(String sname, String sfname, String smname, String address, long mobile,long wnumber, long fmobile, long mmobile,String email, String password, String aadhar,String cgpa,String category,String branch,String section) {
 		super();
 		this.sname = sname;
 		this.sfname = sfname;
@@ -119,10 +119,10 @@ public class StudentBean {
 		this.password = password;
 	}
 	
-	public long getAadhar() {
+	public String getAadhar() {
 		return aadhar;
 	}
-	public void setAadhar(long aadhar) {
+	public void setAadhar(String aadhar) {
 		this.aadhar = aadhar;
 	}
 	public String getCgpa() {

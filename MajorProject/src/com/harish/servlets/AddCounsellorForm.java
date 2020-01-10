@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class AddCounsellorForm
@@ -16,11 +17,16 @@ import javax.servlet.http.HttpServletResponse;
 public class AddCounsellorForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
-	
+		HttpSession session = request.getSession();
+		/*if(session.getAttribute("name") == null) {
+		 out.println("<div class='container'>");
+		 out.println("<h1>please login again</h1>");
+		 response.sendRedirect("adminLogin.html");
+		 out.println("</div>");
+	}*/
 		out.print("<!DOCTYPE html>");
 		out.print("<html>");
 		out.println("<head>");
@@ -43,8 +49,6 @@ public class AddCounsellorForm extends HttpServlet {
 		out.println("<script src='bootstrap/js/myjquery.js'></script>");
 		out.println("</body>");
 		out.print("</html>"); 
-	
-		
 		out.close();
 		}
 	

@@ -21,14 +21,19 @@ public class EditCounsellor extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.setHeader("Cache-Control", "no-store,no-cache,must-revalidate");
+		response.setHeader("Pragma", "no-cache");
+		response.setHeader("Expires","0");
+		
 		String sid=request.getParameter("id");
 		int id=Integer.parseInt(sid);
 		String name=request.getParameter("name");
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		String smobile=request.getParameter("mobile");
-		long mobile=Long.parseLong(smobile);
-		CounsellorBean bean=new CounsellorBean(id,name, email, password, mobile);
+	
+		CounsellorBean bean=new CounsellorBean(id,name, email, password, smobile);
 		CounsellorDao.update(bean);
 		response.sendRedirect("ViewCounsellor");
 	}

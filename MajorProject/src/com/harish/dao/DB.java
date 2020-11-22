@@ -9,7 +9,7 @@ public class DB {
 		Connection con=null;
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/major_db","root","root");
+			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/major_db","username","password");
 			
 		}catch(Exception e){e.printStackTrace();}
 		return con;
@@ -18,7 +18,7 @@ public class DB {
 		Connection con=null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/major_db?useSSL=false","root","root");
+			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/major_db?useSSL=false","username","password");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
